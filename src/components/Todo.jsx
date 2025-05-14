@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import { FaEdit, FaTrash } from "react-icons/fa";
 function usePrevious(value) {
     const ref = useRef();
     useEffect(() => {
@@ -79,14 +79,16 @@ function Todo(props) {
                     type="button"
                     className="btn"
                     onClick={() => setEditing(true)}
-                    ref={editButtonRef}>
-                    Edit <span className="visually-hidden">{props.name}</span>
+                    ref={editButtonRef}
+                    aria-label={`Edit ${props.name}`}>
+                    <FaEdit />
                 </button>
                 <button
                     type="button"
                     className="btn btn__danger"
-                    onClick={() => props.deleteTask(props.id)}>
-                    Delete <span className="visually-hidden">{props.name}</span>
+                    onClick={() => props.deleteTask(props.id)}
+                    aria-label={`Delete ${props.name}`}>
+                    <FaTrash />
                 </button>
             </div>
         </div>
